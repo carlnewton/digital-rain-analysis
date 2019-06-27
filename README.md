@@ -4,11 +4,11 @@ The purpose of this document is to share an understanding of the behaviour and a
 
 This document is a work in progress:
 
-- [ ] Behaviour
+- [x] Behaviour
     - [x] Falling code
     - [x] Changing glyphs
     - [x] Deletion strings
-    - [ ] Highlighted glyphs
+    - [x] Highlighted glyphs
 - [ ] Composition
     - [ ] Grid
     - [ ] Glyphs used
@@ -64,3 +64,20 @@ During a single frame, the new and old glyph occupy the same space, each at 50% 
 Deletion strings only generate invisible characters. Unlike regular strings, deletion strings can appear over the top of existing strings. While we cannot see the deletion string itself, we can see evidence of it when an existing string disappears:
 
 ![Evidence of deletion strings](img/06.gif)
+
+### Highlighted glyphs
+
+Roughly 1 in 5 strings have highlighted glyphs. Only a single glyph of a string is highlighted at a given time, and that glyph is leading glyph of the string:
+
+![Evidence of highlighted glyphs](img/07.gif)
+
+The only exception to the above rule of only a single glyph of a string being highlighted at a given time, is that every so often, all highlighted glyphs will stammer at the same time. The stammer causes strings with highlighted glyphs to fall behind other strings by a single row:
+
+![Highlight glyph stammering](img/08.gif)
+
+| Frame  | Leading glyph            | Second to leading glyph | String length |
+| ------ | ------------------------ | ----------------------- | ------------- |
+| 0      | Highlighted              | Normal                  | 1             |
+| 1      | Partially highlighted    | Partially highlighted   | 2             |
+| 2      | Highlighted              | Normal                  | 2             |
+| 3      | Highlighted              | Normal                  | 3             |
